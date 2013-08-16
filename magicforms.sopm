@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<otrs_package version="1.0">
+    <Name>magicforms</Name>
+    <Version>2.1.51</Version>
+    <Framework>3.1.x</Framework>
+    <Framework>3.2.x</Framework>
+    <Vendor></Vendor>
+    <URL>http://mikemcmahon.github.io</URL>
+    <License>GNU Affero General Public License Version 3, November 2007</License>
+    <ChangeLog Version="1.0.1" Date="2013-02-15 14:09:00">Removed reference to javascript that is not in use</ChangeLog>
+    <ChangeLog Version="1.0.2" Date="2013-02-15 14:22:00">Cleaned up the logging</ChangeLog>
+    <ChangeLog Version="1.0.3" Date="2013-02-15 15:33:00">Removed unused configuration setting...</ChangeLog>
+    <ChangeLog Version="1.0.3" Date="2013-02-15 16:25:00">Fixed a bug with adding attatchments</ChangeLog>
+    <ChangeLog Version="1.0.4" Date="2013-02-20 13:47:00">Fixed a bug that was causing a hash error</ChangeLog>
+    <ChangeLog Version="1.1.0" Date="2013-02-27 17:00:00">Added a UI element for the Agent Ticket screen, Added Config options to control which elements show up on the agent ui</ChangeLog>
+    <ChangeLog Version="1.1.1" Date="2013-03-01 17:00:00">Removed unused config settings</ChangeLog>
+    <ChangeLog Version="1.1.1" Date="2013-03-01 17:00:00">Fixed a bug where fields would show but requirement status was ignored</ChangeLog>
+    <ChangeLog Version="1.1.2" Date="2013-03-04 18:00:00">Updated to break out the magicforms button into 'customer fields' and 'agent fields' buttons</ChangeLog>
+    <ChangeLog Version="1.1.2" Date="2013-03-04 18:00:00">Refactored some code logic to have slightly better names</ChangeLog>
+    <ChangeLog Version="1.2.0" Date="2013-03-06 10:30:00">Added theme support and a skin - must be manually activated!</ChangeLog>
+    <ChangeLog Version="1.2.1" Date="2013-03-06 12:43:00">Changed customer/agent fields to intake/internal fields respectively!</ChangeLog>
+    <ChangeLog Version="1.2.1" Date="2013-03-06 12:43:00">Updated MagicFormsTicketMessage to properly reference title/description and added new img icons and styles to package</ChangeLog>
+    <ChangeLog Version="2.0.0" Date="2013-03-14 11:56:00">Updated to be form based and not queue based, now supports multiple forms into a single queue!</ChangeLog>
+    <ChangeLog Version="2.0.1" Date="2013-03-14 16:21:00">Fixed intake/internal fields and added a form to the customer interface to view submitted fields</ChangeLog>
+    <ChangeLog Version="2.1.1" Date="2013-03-26 18:17:00">Added the ability to handle tickets that are missing a form - can select from the dropdown, major cleanup of the module AgentTicketMagicForms</ChangeLog>
+    <ChangeLog Version="2.1.2" Date="2013-03-28 14:40:00">Added the upgrade code logic so that upgrades add dynamic fields properly.</ChangeLog>
+    <ChangeLog Version="2.1.3" Date="2013-04-20 16:20:00">The best Update ever, removed the magicforms theme, making separate.</ChangeLog>
+    <Description Lang="en">Includes "MagicForms" feature - freebie dynamic forms</Description>
+    <IntroInstall Type="post" Lang="en" Title="Thank you!">Thank you for choosing the MagicForms module!</IntroInstall>
+    <CodeInstall Type="post">
+        my $FunctionName = 'CodeInstall';
+
+        my $CodeModule = 'var::packagesetup::' . $Param{Structure}->{Name}->{Content};
+
+        if ( $Self->{MainObject}->Require($CodeModule) ) {
+            # Create new instance
+            my $CodeObject = $CodeModule->new( %{$Self} );
+
+            if ( $CodeObject ) {
+
+                # start method
+                if ( !$CodeObject->$FunctionName(%{$Self}) ) {
+                    $Self->{LogObject}->Log(
+                        Priority => 'error',
+                        Message => &quot;Could not call method $FunctionName() on $CodeModule.pm&quot;
+                    );
+                }
+            }
+
+            #error handling
+            else {
+                $Self->{LogObject}->Log(
+                    Priority => 'error',
+                    Message => &quot;Could not call method new() on $CodeModule.pm&quot;
+                );
+            }
+        }
+    </CodeInstall>
+    <CodeUninstall Type="pre">
+        # define function name
+        my $FunctionName = 'CodeUninstall';
+
+        # create the package name
+        my $CodeModule = 'var::packagesetup::' . $Param{Structure}->{Name}->{Content};
+
+        # load the module
+        if ( $Self->{MainObject}->Require($CodeModule) ) {
+
+            # create new instance
+            my $CodeObject = $CodeModule->new( %{$Self} );
+
+            if ($CodeObject) {
+
+                # start methode
+                if ( !$CodeObject->$FunctionName(%{$Self}) ) {
+                    $Self->{LogObject}->Log(
+                        Priority => 'error',
+                        Message  => &quot;Could not call method $FunctionName() on $CodeModule.pm.&quot;
+                    );
+                }
+            }
+            # error handling
+            else {
+                $Self->{LogObject}->Log(
+                    Priority => 'error',
+                    Message  => &quot;Could not call method new() on $CodeModule.pm.&quot;
+                );
+            }
+        }
+    </CodeUninstall>
+    <CodeReinstall Type="post">
+        # define function name
+        my $FunctionName = 'CodeReinstall';
+
+        # create the package name
+        my $CodeModule = 'var::packagesetup::' . $Param{Structure}->{Name}->{Content};
+
+        # load the module
+        if ( $Self->{MainObject}->Require($CodeModule) ) {
+
+            # create new instance
+            my $CodeObject = $CodeModule->new( %{$Self} );
+
+            if ($CodeObject) {
+
+                # start methode
+                if ( !$CodeObject->$FunctionName(%{$Self}) ) {
+                    $Self->{LogObject}->Log(
+                        Priority => 'error',
+                        Message  => &quot;Could not call method $FunctionName() on $CodeModule.pm.&quot;
+                    );
+                }
+            }
+            # error handling
+            else {
+                $Self->{LogObject}->Log(
+                    Priority => 'error',
+                    Message  => &quot;Could not call method new() on $CodeModule.pm.&quot;
+                );
+            }
+        }
+    </CodeReinstall>
+    <CodeUpgrade Type="post">
+        # define function name
+        my $FunctionName = 'CodeUpgrade';
+
+        # create the package name
+        my $CodeModule = 'var::packagesetup::' . $Param{Structure}->{Name}->{Content};
+
+        # load the module
+        if ( $Self->{MainObject}->Require($CodeModule) ) {
+
+            # create new instance
+            my $CodeObject = $CodeModule->new( %{$Self} );
+
+            if ($CodeObject) {
+
+                # start methode
+                if ( !$CodeObject->$FunctionName(%{$Self}) ) {
+                    $Self->{LogObject}->Log(
+                        Priority => 'error',
+                        Message  => &quot;Could not call method $FunctionName() on $CodeModule.pm.&quot;
+                    );
+                }
+            }
+            # error handling
+            else {
+                $Self->{LogObject}->Log(
+                    Priority => 'error',
+                    Message  => &quot;Could not call method new() on $CodeModule.pm.&quot;
+                );
+            }
+        }
+    </CodeUpgrade>
+    <Filelist>
+        <!-- Installer -->
+        <File Permission="644" Location="var/packagesetup/magicforms.pm"></File>
+        <!-- Core -->
+        <File Permission="644" Location="Kernel/Config/Files/MagicForms.xml"></File>
+        <File Permission="644" Location="Kernel/Modules/MagicFormsTicketMessage.pm"></File>
+        <File Permission="644" Location="Kernel/Modules/CustomerIntakeFields.pm"></File>
+        <File Permission="644" Location="Kernel/Modules/AgentTicketMagicForms.pm"></File>
+        <File Permission="644" Location="Kernel/Output/HTML/Standard/MagicFormsTicketMessage.dtl"></File>
+        <File Permission="644" Location="Kernel/Output/HTML/Standard/AgentTicketMagicForms.dtl"></File>
+        <File Permission="644" Location="Kernel/Output/HTML/Standard/CustomerIntakeFields.dtl"></File>
+        <File Permission="644" Location="Kernel/System/MagicForms.pm"></File>
+    </Filelist>
+</otrs_package>

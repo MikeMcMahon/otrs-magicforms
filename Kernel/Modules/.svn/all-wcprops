@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/Protiviti/!svn/ver/488/otrs/modules/magicforms/trunk/Kernel/Modules
+END
+MagicFormsTicketMessage.pm
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/Protiviti/!svn/ver/488/otrs/modules/magicforms/trunk/Kernel/Modules/MagicFormsTicketMessage.pm
+END
+AgentTicketMagicForms.pm
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/Protiviti/!svn/ver/488/otrs/modules/magicforms/trunk/Kernel/Modules/AgentTicketMagicForms.pm
+END
+CustomerIntakeFields.pm
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/Protiviti/!svn/ver/488/otrs/modules/magicforms/trunk/Kernel/Modules/CustomerIntakeFields.pm
+END
