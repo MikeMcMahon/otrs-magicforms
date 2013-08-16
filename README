@@ -1,0 +1,8 @@
+# MagicForms
+
+Provides a method to create dynamic forms in OTRS.  Typically this is a feature add-on or done through complex JavaScript/jQuery magic.  This method creates a new DTL file and the required Perl modules to power this as a server-side component!
+
+## Installation 
+Install like any other module, this module should create a field called "Form Submitted" this is important later on!
+
+## Configuration
