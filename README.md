@@ -17,12 +17,31 @@ For every queue you want to link your form to update your Config.pm or ZZZAuto f
     # MagicForms Static Config                             #
     # ---------------------------------------------------- #
     $Self->{'MagicForms::Form'} =  {
-      'NewDemand'   => 'NewDemand',
-      'WebFS'       => 'iServices Support',
-      'SecureFTP'   => 'iServices Support',
-      'VirtualWorkspace' => 'iServices Support',
-      'ICPRequest'  => 'iServices Support',
-      'SupportIncident' => 'iServices Support',
-      'GCS'         => 'Global Client Services',
+      'FormName'        => 'Queue1',
+      'AnotherFormName' => 'Queue2',
+      # Multiple forms can be pointed at the same queue
+      'SomeForm'        => 'Queue2',
     };
 ```
+
+Followed by a configuration for that queue (configuring the specific dynamic fields to show)
+```perl
+    $Self->{'MagicForms::Customer::DynamicFieldToForm'} =  {
+        'FormName' => {
+            # 2 = required
+            # 1 = present on form
+            'RequiredField' => 2,
+            'NonRequiredField' => 1,
+            'AnotherFieldThatIsNotRequired' => 1,
+            'AnotherRequiredField' => 2,
+        },
+        'SomeForm' => {
+            'NonRequiredField' => 1,
+            'AnotherFieldThatIsNotRequired' => 1,
+            'AnotherRequiredField' => 2,
+        },
+```
+
+Point your browser to your main portal your.install.com/otrs/customer.pll?Action=MagicFormsTicketMessage;MFForm=FormName
+
+Where MFForm=_NameOfYourForm_
