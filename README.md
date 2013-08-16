@@ -63,3 +63,6 @@ Point your browser to your main portal *your.install.com/otrs/customer.pll?Actio
 
 Where MFForm= _NameOfYourForm_
 
+To make the customer fields visible update the *CustomerTicketZoom.dtl* With a link to the following: 
+*your.install.com/otrs/customer.pl?Action=CustomerIntakeFields;TicketID=$TicketId;FormName=DynamicField_MagicForms*
+
