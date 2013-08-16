@@ -59,10 +59,10 @@ Followed by a configuration for that queue (configuring the specific dynamic fie
     };
 ```
 
-Point your browser to your main portal *your.install.com/otrs/customer.pll?Action=MagicFormsTicketMessage;MFForm=FormName*
+Point your browser to your main portal **__your.install.com/otrs/customer.pll?Action=MagicFormsTicketMessage;MFForm=FormName__**
 
 Where MFForm= _NameOfYourForm_
 
 To make the customer fields visible update the *CustomerTicketZoom.dtl* With a link to the following: 
-*your.install.com/otrs/customer.pl?Action=CustomerIntakeFields;TicketID=$TicketId;FormName=DynamicField_MagicForms*
+**__your.install.com/otrs/customer.pl?Action=CustomerIntakeFields;TicketID=$TicketId;FormName=DynamicField_MagicForms__**
 
