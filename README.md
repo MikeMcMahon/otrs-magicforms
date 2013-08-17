@@ -1,7 +1,7 @@
 MagicForms
 ===========
 
-Provides a method to create dynamic forms in OTRS.  Typically this is a feature add-on or done through complex JavaScript/jQuery magic.  This method creates a new DTL file and the required Perl modules to power this as a server-side component!
+MagicForms is an OTRS (http://otrs.org) package/module plugin which provides a method to create dynamic forms in OTRS.  Typically this is a feature add-on or done through complex JavaScript/jQuery magic.  This method creates a new DTL file and the required Perl modules to power this as a server-side component!
 
 Installation 
 --------------
